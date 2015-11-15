@@ -1,0 +1,1 @@
+// The timer. Faster, faster!
