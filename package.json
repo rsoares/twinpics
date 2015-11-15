@@ -1,0 +1,15 @@
+{
+  "name": "twinpics",
+  "version": "0.0.0",
+  "description": "Playing with ES6 features.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "babel app --out-file index.js"
+  },
+  "keywords": [
+    "es6"
+  ],
+  "author": "Ricardo Soares",
+  "license": "WTFPL"
+}
