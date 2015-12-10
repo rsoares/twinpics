@@ -1,2 +1,2 @@
-import Board from './board.jsx';
+import Board from './board/board.jsx';
 import './global.scss';
