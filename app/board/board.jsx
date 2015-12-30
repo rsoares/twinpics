@@ -1,7 +1,6 @@
 // The game board.
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class Board extends React.Component {
   render() {
@@ -9,7 +8,4 @@ class Board extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Board/>,
-  document.getElementById('board')
-);
+export default Board;
