@@ -9,7 +9,8 @@
   "main": "bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "babel app --out-file bundle.js",
+    "build": "babel app --out-file bundle.js",
+    "watch": "webpack --watch",
     "start": "live-server"
   },
   "keywords": [
