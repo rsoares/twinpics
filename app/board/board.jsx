@@ -1,10 +1,13 @@
 // The game board.
 
 import React from 'react';
+import './board.scss';
 
 class Board extends React.Component {
   render() {
-    return <h1 className='h1'>Board</h1>;
+    return (
+      <div>BOARD</div>
+    );
   }
 }
 
