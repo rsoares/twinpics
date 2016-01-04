@@ -5,7 +5,7 @@ class Timer extends React.Component {
   render() {
     return (
       <div className='center'>
-        <p className='h3'>00:00:00</p>
+        <p className='h3 mb0'>00:00:00</p>
         <button>Start</button>
         <button>Stop</button>
       </div>
