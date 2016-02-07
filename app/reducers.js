@@ -7,7 +7,7 @@ const initialState = {
   tiles: []
 };
 
-function rootReducer(state=initialState, action) {
+function appState(state=initialState, action) {
   switch (action.type) {
     default:
       return state;
