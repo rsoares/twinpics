@@ -1,0 +1,26 @@
+<div class="the-board">
+  <h1>This is the board game</h1>
+  <Cell name="{{one}}" pos="{{two}}"></Cell>
+</div>
+
+<script>
+  import Cell from './Cell.html'
+
+  export default {
+    data() {
+      return {
+        one: "cell-one",
+        two: 2
+      };
+    },
+
+    components: {Cell}
+  };
+</script>
+
+<!-- 
+  Notes and questions
+   
+  * How do we have access to the DOM elements inside this component without explicitly add ids or classes?
+  * Create a snippet for vscode that builds the component boilerplate in svelte.
+-->
