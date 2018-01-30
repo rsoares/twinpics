@@ -1,19 +1,20 @@
 module.exports = {
-  entry: "./app/app.js",
+  entry: "./src/main.js",
   output: {
     path: __dirname,
-    filename: "bundle.js",
-    publicPath: "/public/"
+    filename: "./build/build.js"
   },
   module: {
-    loaders: [{
+    loaders: [
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader"
       },
       {
-        test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
+        test: /\.(html|svelte)$/,
+        exclude: /node_modules/,
+        loader: "svelte-loader"
       }
     ]
   },
