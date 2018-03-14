@@ -10,7 +10,7 @@
   "scripts": {
     "test": "mocha app/**/*.spec.js --compilers js:babel-core/register",
     "build": "webpack",
-    "develop": "webpack-dev-server --hot --inline"
+    "develop": "webpack-dev-server"
   },
   "keywords": [
     "es6",
@@ -25,6 +25,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "svelte-hot-loader": "^1.5.0",
     "svelte-loader": "^2.3.3",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
