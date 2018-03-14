@@ -1,3 +1,21 @@
-<div class="the-cell" id={{pos}}>
-  Cell {{pos}}
+<div class="cell">
 </div>
+
+<style>
+  .cell {
+    background-color: coral;
+    border: 1px solid slategrey;
+    display: inline-block;
+    margin: 0 1px;
+    height: 56px;
+    width: 56px;
+  }
+</style>
+
+<script>
+  export default {
+    oncreate() {
+      console.info('Cell created');
+    }
+  }
+</script>

@@ -1,7 +1,28 @@
 <div class="the-board">
-  <h1>This is the board game</h1>
-  <Cell name="{{one}}" pos="{{two}}"></Cell>
+  <h1>Twinpics</h1>
+  <div id="board">
+    {{#each rows as row}}
+      {{#each columns as column}}
+        <Cell></Cell>
+      {{/each}}
+    {{/each}}
+  </div>
 </div>
+
+<style>
+  h1 {
+    text-align: center;
+  }
+
+  #board {
+    border: 1px solid rgb(10, 18, 29);
+    display: block;
+    margin: auto;
+    padding: 1px;
+    height: 617px;
+    width: 600px;
+  }
+</style>
 
 <script>
   import Cell from './Cell.html'
@@ -9,12 +30,14 @@
   export default {
     data() {
       return {
-        one: "cell-one",
-        two: 2
+        rows: Array(10),
+        columns: Array(10)
       };
     },
 
-    components: {Cell}
+    components: {
+      Cell
+    }
   };
 </script>
 
