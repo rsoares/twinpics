@@ -1,9 +1,9 @@
 <div class="the-board">
   <h1>Twinpics</h1>
   <div id="board">
-    {{#each rows as row}}
-      {{#each columns as column}}
-        <Cell></Cell>
+    {{#each items as item}}
+      {{#each item as value}}
+        <Cell image="{{value}}"></Cell>
       {{/each}}
     {{/each}}
   </div>
@@ -15,12 +15,11 @@
   }
 
   #board {
-    border: 1px solid rgb(10, 18, 29);
     display: block;
     margin: auto;
     padding: 1px;
-    height: 617px;
-    width: 600px;
+    height: 500px;
+    width: 497px;
   }
 </style>
 
@@ -30,8 +29,12 @@
   export default {
     data() {
       return {
-        rows: Array(10),
-        columns: Array(10)
+        items: [
+          ["🦖", "✨", "🎮", "🎮"],
+          ["🎏", "😱", "💰", "🥐"],
+          ["❤️", "🦖", "✨", "🥐"],
+          ["🎏", "❤️", "💰", "😱"]
+        ]
       };
     },
 
