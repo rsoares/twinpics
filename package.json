@@ -19,7 +19,8 @@
   "author": "Ricardo Soares <botequilha@gmail.com>",
   "license": "WTFPL",
   "dependencies": {
-    "svelte": "^1.53.0"
+    "svelte": "^1.53.0",
+    "svelte-transitions": "^1.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
