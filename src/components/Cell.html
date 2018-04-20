@@ -1,5 +1,11 @@
-<div class="cell">
-  {{image}}
+<div class="cell {{hidden}}"
+  on:click="flip()"
+  style="transform: rotateY({{rotateValue}}deg)">
+  {{#if flipped}}
+    <span in:fade='{delay: 500, duration: 500}' out:fade='{delay: 500, duration: 20}'>
+      {{image}}
+    </span>
+  {{/if}}
 </div>
 
 <style>
@@ -7,18 +13,44 @@
     background-color: coral;
     border: 1px solid slategrey;
     display: inline-block;
-    margin: 0 1px;
+    font-size: 3.5rem;
+    line-height: 2.45;
+    margin: 1px 1px;
     height: 120px;
     width: 120px;
     text-align: center;
+    transition-duration: 2s;
     vertical-align: middle;
   }
 </style>
 
 <script>
+  import {fade} from 'svelte-transitions';
+
   export default {
-    oncreate() {
-      console.info('Cell created');
+    data() {
+      return {
+        rotateValue: 0,
+        flipped: false,
+        hidden: 'hidden'
+      }
+    },
+
+    methods: {
+      flip() {
+        let newValue = this.get('flipped') ? 180 : 0;
+        let shouldFlipClass = this.get('flipped') ? '' : 'hidden';
+        
+        this.set({
+          rotateValue: newValue,
+          flipped: !this.get('flipped'),
+          hidden: shouldFlipClass
+        });
+      }
+    },
+
+    transitions: {
+      fade
     }
   }
 </script>
