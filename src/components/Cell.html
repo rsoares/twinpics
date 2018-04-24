@@ -1,10 +1,7 @@
 <div class="cell {{hidden}}"
-  on:click="flip()"
-  style="transform: rotateY({{rotateValue}}deg)">
+  on:click="flip()">
   {{#if flipped}}
-    <span in:fade='{delay: 500, duration: 500}' out:fade='{delay: 500, duration: 20}'>
-      {{image}}
-    </span>
+    {{image}}
   {{/if}}
 </div>
 
@@ -25,32 +22,50 @@
 </style>
 
 <script>
-  import {fade} from 'svelte-transitions';
 
   export default {
     data() {
       return {
-        rotateValue: 0,
         flipped: false,
-        hidden: 'hidden'
+        hidden: 'hidden',
+        hit: []
       }
+    },
+
+    onupdate({changed, current, previous}) {
+      
+      // check for a pair in 'hit' or push it in there.
+      // if a pair is in 'hit' and is equal to the current image, change color and make it "unflippable".
+      // if a pair is in 'hit' and is not equal, remove all from 'hit'
     },
 
     methods: {
       flip() {
-        let newValue = this.get('flipped') ? 180 : 0;
-        let shouldFlipClass = this.get('flipped') ? '' : 'hidden';
-        
+        let {flipped} = this.get();
+        console.log(this);
         this.set({
-          rotateValue: newValue,
-          flipped: !this.get('flipped'),
-          hidden: shouldFlipClass
+          flipped: !flipped,
+          hidden: flipped ? '' : 'hidden'
         });
-      }
-    },
+      },
 
-    transitions: {
-      fade
+      validate() {
+        const {image, hit} = this.get();
+        
+        
+        if (hit.length === 0) {
+          hit.push(image);
+          return;
+        }
+        
+        if (hit.includes(image)) {
+          
+        } else {
+
+        }
+        
+        
+      }
     }
   }
 </script>
