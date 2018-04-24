@@ -19,15 +19,14 @@
   "author": "Ricardo Soares <botequilha@gmail.com>",
   "license": "WTFPL",
   "dependencies": {
-    "svelte": "^1.53.0",
-    "svelte-transitions": "^1.1.1"
+    "svelte": "2.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "svelte-hot-loader": "^1.5.0",
-    "svelte-loader": "^2.3.3",
+    "svelte-loader": "^2.8.1",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   }
