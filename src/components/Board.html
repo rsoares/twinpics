@@ -3,7 +3,7 @@
   <div id="board">
     {{#each items as item}}
       {{#each item as value}}
-        <Cell image="{{value}}"></Cell>
+        <Cell image="{{value}}" onclickHandler={{flip}}></Cell>
       {{/each}}
     {{/each}}
   </div>
@@ -34,8 +34,13 @@
           ["🎏", "😱", "💰", "🥐"],
           ["❤️", "🦖", "✨", "🥐"],
           ["🎏", "❤️", "💰", "😱"]
-        ]
+        ],
+        hit: []
       };
+    },
+
+    methods: {
+      flip: () => console.log("hello")
     },
 
     components: {

@@ -1,5 +1,4 @@
-<div class="cell {{hidden}}"
-  on:click="flip()">
+<div class="cell {{hidden}}" on:click="flip()">
   {{#if flipped}}
     {{image}}
   {{/if}}
@@ -19,52 +18,25 @@
     transition-duration: 2s;
     vertical-align: middle;
   }
+  .done {
+    background-color: rgba(231, 96, 18, 0.822);
+  }
 </style>
 
 <script>
-
   export default {
     data() {
       return {
         flipped: false,
-        hidden: 'hidden',
-        hit: []
+        hidden: 'hidden'
       }
-    },
-
-    onupdate({changed, current, previous}) {
-      
-      // check for a pair in 'hit' or push it in there.
-      // if a pair is in 'hit' and is equal to the current image, change color and make it "unflippable".
-      // if a pair is in 'hit' and is not equal, remove all from 'hit'
     },
 
     methods: {
       flip() {
-        let {flipped} = this.get();
-        console.log(this);
-        this.set({
-          flipped: !flipped,
-          hidden: flipped ? '' : 'hidden'
-        });
-      },
-
-      validate() {
-        const {image, hit} = this.get();
-        
-        
-        if (hit.length === 0) {
-          hit.push(image);
-          return;
-        }
-        
-        if (hit.includes(image)) {
-          
-        } else {
-
-        }
-        
-        
+        const {onclickHandler} = this.get();
+        console.log(this)
+        onclickHandler();
       }
     }
   }
