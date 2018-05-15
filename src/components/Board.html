@@ -3,7 +3,7 @@
   <div id="board">
     {{#each items as item}}
       {{#each item as value}}
-        <Cell image="{{value}}" onclickHandler={{flip}}></Cell>
+        <Cell image="{{value}}" on:flip="validate(this)"></Cell>
       {{/each}}
     {{/each}}
   </div>
@@ -41,6 +41,13 @@
 
     components: {
       Cell
+    },
+
+    methods: {
+      validate(Cell) {
+        const {flipped, image} = Cell.get();
+        // Check if a similar Cell with the same image exists. 
+      }
     }
   };
 </script>

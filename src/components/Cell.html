@@ -1,4 +1,4 @@
-<div class="cell {{hidden}}">
+<div class="cell {{hidden}}" on:click="flip()">
   {{#if flipped}}
     {{image}}
   {{/if}}
@@ -29,6 +29,17 @@
       return {
         flipped: false,
         hidden: 'hidden'
+      }
+    },
+
+    methods: {
+      flip() {
+        let {flipped} = this.get();
+
+        this.set({
+          flipped: !flipped
+        });
+        this.fire('flip');
       }
     }
   }
