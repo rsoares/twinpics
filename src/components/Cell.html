@@ -1,4 +1,4 @@
-<div class="cell {{hidden}}" on:click="flip()">
+<div class="cell {{hidden}}">
   {{#if flipped}}
     {{image}}
   {{/if}}
@@ -29,14 +29,6 @@
       return {
         flipped: false,
         hidden: 'hidden'
-      }
-    },
-
-    methods: {
-      flip() {
-        const {onclickHandler} = this.get();
-        console.log(this)
-        onclickHandler();
       }
     }
   }
