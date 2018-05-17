@@ -35,7 +35,7 @@
           ["❤️", "🦖", "✨", "🥐"],
           ["🎏", "❤️", "💰", "😱"]
         ],
-        hit: []
+        hit: null
       };
     },
 
@@ -46,7 +46,29 @@
     methods: {
       validate(Cell) {
         const {flipped, image} = Cell.get();
-        // Check if a similar Cell with the same image exists. 
+        let {hit} = this.get();
+        
+        if (flipped) {
+          // Kick start.
+          if (hit === null) {
+            this.set({
+              hit: image
+            });
+          } else {
+            if (hit === image) {
+              console.log("MATCH!");
+              // Apply a different style.
+              // Nullify 'hit'
+            } else {
+              console.log("MISS...");
+              // Flip the tiles.
+              // Nullify 'hit'
+            }
+            this.set({
+              hit: null
+            });
+          }
+        }
       }
     }
   };
