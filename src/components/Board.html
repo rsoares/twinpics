@@ -60,9 +60,10 @@
               compareCell.set({twinFound: true});
               currentCell.set({twinFound: true});
             } else {
-              console.log("MISS...");
-              // Flip the tiles.
-              // Nullify 'hit'
+              setTimeout(() => {
+                compareCell.set({flipped: false});
+                currentCell.set({flipped: false});
+              }, 250)
             }
             this.set({
               compareCell: null
