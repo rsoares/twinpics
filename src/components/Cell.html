@@ -1,4 +1,4 @@
-<div class="cell {{hidden}}" on:click="flip()">
+<div class="cell {{hidden}} {{done}}" on:click="flip(event)">
   {{#if flipped}}
     {{image}}
   {{/if}}
@@ -19,7 +19,8 @@
     vertical-align: middle;
   }
   .done {
-    background-color: rgba(231, 96, 18, 0.822);
+    background-color: rgb(117, 115, 114);
+    transition-duration: 0.2s;
   }
 </style>
 
@@ -28,14 +29,29 @@
     data() {
       return {
         flipped: false,
-        hidden: 'hidden'
+        twinFound: false,
+        hidden: 'hidden',
+        done: ''
+      }
+    },
+    
+    onstate({changed, current, previous}) {
+      let {twinFound} = changed;
+      if (twinFound) {
+        this.set({
+          done: 'done'
+        });
       }
     },
 
     methods: {
-      flip() {
-        let {flipped} = this.get();
+      flip(event) {
+        let {flipped, twinFound} = this.get();
 
+        if (twinFound) {
+          event.preventDefault();
+          return;
+        }
         this.set({
           flipped: !flipped
         });

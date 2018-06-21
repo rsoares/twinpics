@@ -35,7 +35,7 @@
           ["❤️", "🦖", "✨", "🥐"],
           ["🎏", "❤️", "💰", "😱"]
         ],
-        hit: null
+        compareCell: null
       };
     },
 
@@ -44,28 +44,28 @@
     },
 
     methods: {
-      validate(Cell) {
-        const {flipped, image} = Cell.get();
-        let {hit} = this.get();
+      validate(currentCell) {
+        const {flipped} = currentCell.get();
+        let {compareCell} = this.get();
         
         if (flipped) {
           // Kick start.
-          if (hit === null) {
-            this.set({
-              hit: image
-            });
+          if (compareCell === null) {
+            compareCell = currentCell;
+            this.set({compareCell});
           } else {
-            if (hit === image) {
-              console.log("MATCH!");
-              // Apply a different style.
-              // Nullify 'hit'
+            let match = compareCell.get('image') === currentCell.get('image');
+
+            if (match) {
+              compareCell.set({twinFound: true});
+              currentCell.set({twinFound: true});
             } else {
               console.log("MISS...");
               // Flip the tiles.
               // Nullify 'hit'
             }
             this.set({
-              hit: null
+              compareCell: null
             });
           }
         }
