@@ -1,0 +1,22 @@
+<div on:start-game="start()">
+  {{hours}}:{{minutes}}:{{seconds}}
+</div>
+
+<style>
+  div {
+    font-size: 3em;
+  }
+</style>
+
+<script>
+  export default {
+    data() {
+      return {
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+      };
+    }
+    
+  }
+</script>
