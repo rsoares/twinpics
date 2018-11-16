@@ -1,11 +1,11 @@
 <div class="the-board">
-  <h1>Twinpics</h1>
+  <h1>Twinpics ✨</h1>
   <div id="board">
-    {{#each items as item}}
-      {{#each item as value}}
-        <Cell image="{{value}}" on:flip="validate(this)"></Cell>
-      {{/each}}
-    {{/each}}
+    {#each items as item}
+      {#each item as value}
+        <Cell image="{value}" on:flip="validate(this)"></Cell>
+      {/each}
+    {/each}
   </div>
   <div id="counter">
     <Counter></Counter>
@@ -59,7 +59,7 @@
         const {flipped} = currentCell.get();
         let {compareCell} = this.get();
         
-        manageStartEnd();
+        this.manageStartEnd();
         
         if (flipped) {
           // Kick start.
@@ -67,7 +67,7 @@
             compareCell = currentCell;
             this.set({compareCell});
           } else {
-            let match = compareCell.get('image') === currentCell.get('image');
+            const match = compareCell.get().image === currentCell.get().image;
 
             if (match) {
               compareCell.set({twinFound: true});

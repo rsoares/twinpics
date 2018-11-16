@@ -20,11 +20,9 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "svelte-hot-loader"
-          },
-          {
             loader: "svelte-loader",
-            query: {
+            options: {
+              hotReload: true,
               emitCss: false,
               store: true
             }
