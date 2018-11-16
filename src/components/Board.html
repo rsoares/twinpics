@@ -7,6 +7,9 @@
       {{/each}}
     {{/each}}
   </div>
+  <div id="counter">
+    <Counter></Counter>
+  </div>
 </div>
 
 <style>
@@ -21,10 +24,16 @@
     height: 500px;
     width: 497px;
   }
+
+  #counter {
+    margin: auto;
+    text-align: center;
+  }
 </style>
 
 <script>
-  import Cell from './Cell.html'
+  import Cell from './Cell.html';
+  import Counter from './Counter.html';
 
   export default {
     data() {
@@ -35,18 +44,22 @@
           ["❤️", "🦖", "✨", "🥐"],
           ["🎏", "❤️", "💰", "😱"]
         ],
-        compareCell: null
+        compareCell: null,
+        start: false
       };
     },
 
     components: {
-      Cell
+      Cell,
+      Counter
     },
 
     methods: {
       validate(currentCell) {
         const {flipped} = currentCell.get();
         let {compareCell} = this.get();
+        
+        manageStartEnd();
         
         if (flipped) {
           // Kick start.
@@ -70,14 +83,16 @@
             });
           }
         }
+      },
+      
+      manageStartEnd() {
+        let {start} = this.get();
+        let cellsFlipped = document.getElementsByClassName('done');
+
+        if (cellsFlipped.length === 0 && !start) {
+          this.fire('start-game');
+        }
       }
     }
   };
 </script>
-
-<!-- 
-  Notes and questions
-   
-  * How do we have access to the DOM elements inside this component without explicitly add ids or classes?
-  * Create a snippet for vscode that builds the component boilerplate in svelte.
--->
