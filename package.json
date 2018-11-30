@@ -10,7 +10,7 @@
   "scripts": {
     "test": "mocha app/**/*.spec.js --compilers js:babel-core/register",
     "build": "webpack",
-    "develop": "webpack-dev-server"
+    "develop": "NODE_ENV=development webpack-dev-server"
   },
   "keywords": [
     "es6",
@@ -19,7 +19,8 @@
   "author": "Ricardo Soares <botequilha@gmail.com>",
   "license": "WTFPL",
   "dependencies": {
-    "svelte": "2.15.3"
+    "svelte": "2.15.3",
+    "svelte-transitions": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.1.6",
