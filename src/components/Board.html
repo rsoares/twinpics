@@ -1,5 +1,5 @@
 <div class="the-board">
-  <h1>Twinpics ✨</h1>
+  <h1>Twinpics</h1>
   <div id="board">
     {#each items as item}
       {#each item as value}
@@ -8,7 +8,7 @@
     {/each}
   </div>
   <div id="counter">
-    <Counter></Counter>
+    <Counter start="{start}"></Counter>
   </div>
 </div>
 
@@ -54,12 +54,16 @@
       Counter
     },
 
+    computed: {
+      size: ({items}) => items.reduce((prev, curr) => {
+        return prev + curr.length;
+      }, 0)
+    },
+
     methods: {
       validate(currentCell) {
         const {flipped} = currentCell.get();
-        let {compareCell} = this.get();
-        
-        this.manageStartEnd();
+        let {compareCell, size} = this.get();
         
         if (flipped) {
           // Kick start.
@@ -68,10 +72,10 @@
             this.set({compareCell});
           } else {
             const match = compareCell.get().image === currentCell.get().image;
-
             if (match) {
               compareCell.set({twinFound: true});
               currentCell.set({twinFound: true});
+              this.set({size: size - 2});
             } else {
               setTimeout(() => {
                 compareCell.set({flipped: false});
@@ -81,17 +85,17 @@
             this.set({
               compareCell: null
             });
-          }
+          }  
         }
+        this.manageStartEnd();
       },
       
       manageStartEnd() {
-        let {start} = this.get();
-        let cellsFlipped = document.getElementsByClassName('done');
-
-        if (cellsFlipped.length === 0 && !start) {
-          this.fire('start-game');
-        }
+        let {start, size} = this.get();
+        
+        this.set({
+          start: size > 0
+        });
       }
     }
   };
