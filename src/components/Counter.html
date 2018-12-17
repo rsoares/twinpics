@@ -1,5 +1,5 @@
-<div on:start-game="this.start()">
-  {hours}:{minutes}:{seconds}
+<div>
+  {ellapsed}
 </div>
 
 <style>
@@ -12,11 +12,57 @@
   export default {
     data() {
       return {
-        hours: 0,
+        start: false,
+        stop: false,
         minutes: 0,
         seconds: 0
       };
+    },
+
+    oncreate() {
+      this.interval = null;
+    },
+
+    onupdate({changed}) {
+      let {start, stop} = this.get();
+
+      if (start) {
+        this.interval = setInterval(this.count.bind(this), 1000);
+        this.set({
+          start: false
+        });
+      }
+
+      if (stop) {
+        clearInterval(this.interval);
+        this.set({
+          stop: false
+        })
+      }
+    },
+
+    ondestroy() {
+      clearInterval(this.interval);
+    },
+
+    computed: {
+      ellapsed: ({minutes, seconds}) => {
+        const ellapsedMins = String(minutes).padStart(2, '0');
+        const ellapsedSecs = String(seconds).padStart(2, '0');
+
+        return `${ellapsedMins}:${ellapsedSecs}`;
+      }
+    },
+
+    methods: {
+      count() {
+        let {seconds, minutes} = this.get();
+
+        this.set({
+          seconds: seconds === 59 ? 0 : seconds + 1,
+          minutes: seconds === 59 ? minutes + 1 : minutes + 0
+        });
+      }
     }
-    
   }
 </script>
