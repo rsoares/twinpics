@@ -1,26 +1,45 @@
-<div class="cell {hidden} {done}" on:click="flip(event)">
-  {#if flipped}
+<div class="cell {rotate}" on:click="flip(event)">
+  <div class="face front">
+  </div>
+  <div class="face back">
     {image}
-  {/if}
+  </div>
 </div>
 
 <style>
   .cell {
     background-color: coral;
     border: 1px solid slategrey;
+    border-radius: 4px;
     display: inline-block;
     font-size: 3.5rem;
     line-height: 2.45;
     margin: 1px 1px;
     height: 120px;
     width: 120px;
+    position: relative;
     text-align: center;
-    transition-duration: 2s;
+    transition: 0.2s;
+    transform-style: preserve-3d;
     vertical-align: middle;
+    perspective: 1000px;
   }
-  .done {
-    background-color: rgb(117, 115, 114);
-    transition-duration: 0.2s;
+  .rotate {
+    transform: rotateY(180deg);
+  }
+  .front {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    z-index: 2;
+  }
+  .back {
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+    transform: rotateY(-180deg);
   }
 </style>
 
@@ -30,16 +49,24 @@
       return {
         flipped: false,
         twinFound: false,
-        hidden: 'hidden',
+        rotate: '',
         done: ''
       }
     },
     
     onstate({changed, current, previous}) {
       let {twinFound} = changed;
+      let {flipped} = current;
+
       if (twinFound) {
         this.set({
           done: 'done'
+        });
+      }
+
+      if (!flipped) {
+        this.set({
+          rotate: ''
         });
       }
     },
@@ -53,7 +80,8 @@
           return;
         }
         this.set({
-          flipped: !flipped
+          flipped: !flipped,
+          rotate: flipped ? '' : 'rotate'
         });
         this.fire('flip');
       }
