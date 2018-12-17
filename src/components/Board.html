@@ -8,7 +8,7 @@
     {/each}
   </div>
   <div id="counter">
-    <Counter start="{start}"></Counter>
+    <Counter start="{start}" stop="{stop}"></Counter>
   </div>
 </div>
 
@@ -45,7 +45,8 @@
           ["🎏", "❤️", "💰", "😱"]
         ],
         compareCell: null,
-        start: false
+        start: false,
+        stop: false
       };
     },
 
@@ -94,7 +95,8 @@
         let {start, size} = this.get();
         
         this.set({
-          start: size > 0
+          start: size > 0,
+          stop: size === 0
         });
       }
     }
