@@ -19,6 +19,7 @@
   "author": "Ricardo Soares <botequilha@gmail.com>",
   "license": "WTFPL",
   "dependencies": {
+    "array-shuffle": "^1.0.1",
     "svelte": "^2.16.0",
     "svelte-transitions": "^1.2.0"
   },
