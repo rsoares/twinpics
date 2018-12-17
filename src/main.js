@@ -1,6 +1,6 @@
 import Board from './components/Board.html';
 
 
-let board = new Board({
+new Board({
   target: document.querySelector('main')
 });
