@@ -34,16 +34,17 @@
 <script>
   import Cell from './Cell.html';
   import Counter from './Counter.html';
+  import arrayShuffle from 'array-shuffle';
 
   export default {
     data() {
       return {
-        items: [
+        items: arrayShuffle([
           ["🦖", "✨", "🎮", "🎮"],
           ["🎏", "😱", "💰", "🥐"],
           ["❤️", "🦖", "✨", "🥐"],
           ["🎏", "❤️", "💰", "😱"]
-        ],
+        ].map(arrayShuffle)),
         compareCell: null,
         start: false,
         stop: false
