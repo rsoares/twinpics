@@ -1,4 +1,4 @@
-<div class="cell {rotate}" on:click="flip(event)">
+<div class="cell {rotate} {done}" on:click="flip(event)">
   <div class="face front">
   </div>
   <div class="face back">
@@ -8,9 +8,10 @@
 
 <style>
   .cell {
-    background-color: coral;
-    border: 1px solid slategrey;
+    background-color: floralwhite;
+    border: 2px solid slategrey;
     border-radius: 4px;
+    cursor: pointer;
     display: inline-block;
     font-size: 3.5rem;
     line-height: 2.45;
@@ -41,6 +42,10 @@
     position: absolute;
     transform: rotateY(180deg);
   }
+  .done {
+    background-color: coral;
+    transition: background-color 0.6s;
+  }
 </style>
 
 <script>
@@ -54,11 +59,11 @@
       }
     },
     
-    onstate({changed, current, previous}) {
+    onupdate({changed, current, previous}) {
       let {twinFound} = changed;
       let {flipped} = current;
 
-      if (twinFound) {
+      if (twinFound === true) {
         this.set({
           done: 'done'
         });
