@@ -24,12 +24,8 @@
     vertical-align: middle;
     perspective: 1000px;
   }
-  .cell:hover {
-    transition: background-color 0.02s;
-    background-color: burlywood;
-  }
   .rotate {
-    transform: rotateY(180deg);
+    transform: rotateY(-180deg);
   }
   .front {
     height: 100%;
@@ -43,7 +39,7 @@
     width: 100%;
     backface-visibility: hidden;
     position: absolute;
-    transform: rotateY(-180deg);
+    transform: rotateY(180deg);
   }
 </style>
 
