@@ -23,7 +23,7 @@
     margin: auto;
     padding: 1px;
     height: 500px;
-    width: 497px;
+    width: 510px;
   }
 
   #counter {
@@ -67,7 +67,7 @@
       validate(currentCell) {
         const {flipped} = currentCell.get();
         let {compareCell, size} = this.get();
-        
+
         if (flipped) {
           // Kick start.
           if (compareCell === null) {
@@ -88,7 +88,11 @@
             this.set({
               compareCell: null
             });
-          }  
+          }
+        } else {
+          this.set({
+            compareCell: null
+          });
         }
         this.manageStartEnd();
       },
