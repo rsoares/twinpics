@@ -1,9 +1,11 @@
+const path = require("path");
+
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: "./src/main.js",
   output: {
-    path: __dirname,
-    filename: "./build/build.js"
+    path: path.resolve(__dirname, "build"),
+    filename: "build.js"
   },
   module: {
     rules: [

@@ -9,7 +9,7 @@
   "main": "bundle.js",
   "scripts": {
     "test": "mocha app/**/*.spec.js --compilers js:babel-core/register",
-    "build": "webpack",
+    "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack-dev-server"
   },
   "keywords": [
@@ -29,6 +29,7 @@
     "babel-loader": "8.0.4",
     "svelte-loader": "2.11.0",
     "webpack": "^4.27.1",
+    "webpack-cli": "^3.3.0",
     "webpack-dev-server": "3.1.10"
   }
 }
