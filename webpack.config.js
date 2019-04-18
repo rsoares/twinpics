@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const path = require("path");
 
 module.exports = {
@@ -5,10 +6,8 @@ module.exports = {
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "build"),
+    publicPath: "/",
     filename: "build.js"
-  },
-  devServer: {
-    contentBase: "./"
   },
   module: {
     rules: [
